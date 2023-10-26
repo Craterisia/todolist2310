@@ -50,6 +50,15 @@ body {
 .new {
   background: transparent;
   border: 0;
+  color: inherit;
+  border-bottom: 1px solid currentColor;
+  font-size: inherit;
+  outline: none;
+  transition: 150ms ease-in;
+}
+
+.new:focus {
+  border-bottom-width: 3px;
 }
 
 .active-list {
