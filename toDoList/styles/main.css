@@ -140,6 +140,19 @@ form {
 .task label {
   display: flex;
   align-items: center;
+  position: relative;
+  margin-bottom: 1.25em;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: -50%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.1;
 }
 
 .custom-checkbox {
@@ -149,6 +162,8 @@ form {
   height: var(--size);
   margin-right: var(--size);
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 300ms ease-in-out;
 }
 
 .checked {
@@ -159,4 +174,9 @@ form {
 .unchecked {
   background-image: url(/toDoList/img/cross.png);
   background-size: cover;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.2);
 }
