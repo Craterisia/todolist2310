@@ -160,6 +160,7 @@ form {
   display: inline-block;
   width: var(--size);
   height: var(--size);
+  background-size: cover;
   margin-right: var(--size);
   cursor: pointer;
   transform: scale(1);
@@ -168,12 +169,10 @@ form {
 
 .checked {
   background-image: url(/toDoList/img/checked.png);
-  background-size: cover;
 }
 
 .unchecked {
-  background-image: url(/toDoList/img/cross.png);
-  background-size: cover;
+  background-image: url(/toDoList/img/blank.png);
 }
 
 .task:hover .custom-checkbox,
