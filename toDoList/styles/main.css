@@ -24,7 +24,7 @@ body {
   grid:
     "header header header header" auto
     "...... lists active ......" auto
-    "footer footer footer footer" auto;
+    "...... footer footer ....." auto;
   grid-template-columns:
     1fr minmax(100px, 300px) minmax(250px, 500px)
     1fr;
@@ -45,14 +45,13 @@ body {
 
 .footer {
   grid-area: footer;
-  width: 100%;
   text-align: center;
   font-size: 1rem;
   color: var(--clr-light);
   opacity: 0.5;
-  background: var(--clr-dark);
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 
 .footer a {
@@ -266,7 +265,7 @@ form {
       "header header header" auto
       "...... lists ......" auto
       "...... active ......" auto
-      "footer footer footer" auto;
+      "...... footer ......" auto;
     grid-template-columns: 1fr minmax(100px, 300px) 1fr;
     row-gap: 30px;
   }

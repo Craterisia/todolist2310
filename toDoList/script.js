@@ -1,6 +1,13 @@
 const listsContainer = document.querySelector("[data-lists]");
 const newListForm = document.querySelector("[data-new-list-form]");
 const newListInput = document.querySelector("[data-new-list-input]");
+const deleteListButton = document.querySelector("[data-delete-list-button]");
+const listDisplayContainer = document.querySelector(
+  "[data-list-display-container]"
+);
+const listTitleElement = document.querySelector("[data-list-title]");
+const listCountElement = document.querySelector("[data-list-count]");
+const tasksContainer = document.querySelector("[data-tasks]");
 
 // Nastavení výchozího prázdného pole nebo vytažení seznamu uloženého v local storage a Zachycení aktivace seznamu úkolů
 const LOCAL_STORAGE_LIST_KEY = "task.lists";
@@ -14,6 +21,13 @@ listsContainer.addEventListener("click", (e) => {
     selectedListId = e.target.dataset.listId;
     saveAndRender();
   }
+});
+
+// Zachycení kliknutí na button na vymazání seznamu úkolů
+deleteListButton.addEventListener("click", (e) => {
+  lists = lists.filter((list) => list.id !== selectedListId);
+  selectedListId = null;
+  saveAndRender();
 });
 
 // Zachycení nového seznamu úkolů
@@ -50,9 +64,19 @@ function save() {
   localStorage.setItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY, selectedListId);
 }
 
-// Vytvoření html podkladu pro nový seznam úkolů (tag li, třída, připnutí, aktivní)
+// Zobrazení a skrytí podkúkolů,
 function render() {
   clearElement(listsContainer);
+  renderLists();
+
+  if (selectedListId == null) {
+    listDisplayContainer.style.display = "none";
+  } else {
+  }
+}
+
+// Vytvoření html podkladu pro nový seznam úkolů (tag li, třída, připnutí, aktivní)
+function renderLists() {
   lists.forEach((list) => {
     const listElement = document.createElement("li");
     listElement.dataset.listId = list.id;
