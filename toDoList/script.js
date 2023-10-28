@@ -142,7 +142,7 @@ function renderTasks(selectedList) {
 // Počitalo zbývajících úkolů
 function renderTaskCount(selectedList) {
   const incompleteTaskCount = selectedList.tasks.filter(
-    (task) => !!task.complete
+    (task) => !task.complete
   ).length;
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
@@ -161,7 +161,6 @@ function renderLists() {
     listsContainer.appendChild(listElement);
   });
 }
-
 // Vymazání nežádoucího seznamu úkolů, které nemají v seznamu co dělat (cokoliv co není v local storage)
 function clearElement(element) {
   while (element.firstChild) {
