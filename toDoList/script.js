@@ -77,7 +77,7 @@ newTaskForm.addEventListener("submit", (e) => {
 
   // Vytváření nového podseznamu úkolů
   const taskName = newTaskInput.value;
-  if (taskName == null || taskName == "") return;
+  if (taskName == null || taskName === "") return;
   const task = createTask(taskName);
   newTaskInput.value = null;
   const selectedList = lists.find((list) => list.id === selectedListId);
@@ -86,19 +86,11 @@ newTaskForm.addEventListener("submit", (e) => {
 });
 
 function createList(name) {
-  return {
-    id: Date.now().toString(),
-    name: name,
-    tasks: [],
-  };
+  return { id: Date.now().toString(), name: name, tasks: [] };
 }
 
 function createTask(name) {
-  return {
-    id: Date.now().toString(),
-    name: name,
-    complete: false,
-  };
+  return { id: Date.now().toString(), name: name, complete: false };
 }
 
 // Zavolání funkce save a render, aby proběhlo uložení nového seznamu do local storage
@@ -150,8 +142,8 @@ function renderTasks(selectedList) {
 // Počitalo zbývajících úkolů
 function renderTaskCount(selectedList) {
   const incompleteTaskCount = selectedList.tasks.filter(
-    (task) => !task.complete
-  ).lenght;
+    (task) => !!task.complete
+  ).length;
   const taskString = incompleteTaskCount === 1 ? "task" : "tasks";
   listCountElement.innerText = `${incompleteTaskCount} ${taskString} remaining`;
 }
