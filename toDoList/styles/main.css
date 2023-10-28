@@ -238,3 +238,23 @@ form {
   bottom: -35px;
   color: var(--clr-light);
 }
+
+@media (width <= 850px) {
+  body {
+    font-size: 1rem;
+    grid:
+      "header header header" auto
+      "...... lists ......" auto
+      "...... active ......" auto;
+    grid-template-columns: 1fr minmax(100px, 300px) 1fr;
+    row-gap: 30px;
+  }
+
+  .todo-header {
+    padding: var(--spacer);
+    background: #e4e4e4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
