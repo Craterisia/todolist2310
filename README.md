@@ -1,2 +1,2 @@
 # todolist2310
-Small excersise
+Small excersise in pure CSS and vanilla JavaScript
