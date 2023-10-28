@@ -2,7 +2,7 @@
   --clr-primary: #331616;
   --clr-light: #f4f4f4;
   --clr-dark: #333;
-  --clr-warning: #632424;
+  --clr-warning: #d61717;
 }
 
 *,
@@ -78,6 +78,16 @@ form {
   opacity: 0.7;
 }
 
+.btn.delete {
+  opacity: 0.7;
+  font-size: 1rem;
+  transition: color 200ms;
+}
+
+.btn.delete:hover {
+  color: var(--clr-warning);
+}
+
 .new {
   background: transparent;
   border: 0;
@@ -85,20 +95,29 @@ form {
   border-bottom: 1px solid currentColor;
   font-size: inherit;
   outline: none;
-  transition: 150ms ease-in;
+  transition: all 150ms ease-in;
   order: 2;
+  padding: 0.25em;
+}
+
+.new::placeholder {
+  opacity: 0.4;
 }
 
 .new:focus {
-  border-bottom-width: 3px;
+  border-bottom-width: 2px;
 }
 
 .new:focus::placeholder {
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 .new.list {
   font-size: 1.1rem;
+}
+
+.new.task {
+  margin-bottom: 0;
 }
 
 .active-list {
@@ -130,6 +149,11 @@ form {
 
 .todo-body {
   padding: var(--spacer);
+  position: relative;
+}
+
+.new-task-creator .create {
+  color: var(--clr-primary);
 }
 
 [type="checkbox"] {
@@ -138,18 +162,22 @@ form {
 }
 
 .task label {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  position: relative;
+}
+
+.task {
   position: relative;
   margin-bottom: 1.25em;
 }
 
-.task label::after {
+.task::after {
   content: "";
   position: absolute;
   right: 0;
   left: 0;
-  bottom: -50%;
+  bottom: -0.5em;
   height: 1px;
   background: currentColor;
   opacity: 0.1;
@@ -178,4 +206,35 @@ form {
 .task:hover .custom-checkbox,
 [type="checkbox"]:focus + label .custom-checkbox {
   transform: scale(1.2);
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 1.5em;
+  right: 0;
+  height: 3px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.delete-stuff {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: -35px;
+  color: var(--clr-light);
 }
